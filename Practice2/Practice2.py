@@ -42,7 +42,7 @@ def activity_forecast(days):
                 activityToday = "Cloudy"
                 activityList.append("Cloudy")
         elif activityToday == "Rain":
-            ###missing codes below here
+            change = np.random.choice(transitionName[1],replace=True,p=transitionMatrix[1])
             if change == "SS":
                 prob = prob * 0.1
                 activityList.append("Sunny")
@@ -59,7 +59,7 @@ def activity_forecast(days):
 
 
         elif activityToday == "Cloudy":
-            ###missing codes below here
+            change = np.random.choice(transitionName[2],replace=True,p=     transitionMatrix[2])
             if change == "SS":
                 prob = prob * 0.2
                 activityList.append("Sunny")
