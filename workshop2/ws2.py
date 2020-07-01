@@ -27,7 +27,7 @@ def callback(msg):
 	#print msg.ranges[359]
 
 	#If obstacle is at least 0.5m in front of the TB3, the TB3 will move forward
-	if msg.ranges[0] > 0.5 and msg.ranges[45] > 0.5 and msg.ranges[315] > 0.5:
+	if msg.ranges[0] >= 0.5 and msg.ranges[45] >= 0.5 and msg.ranges[315] >= 0.5:
 		print("No obstacle detected")
 		if move.angular.z==0: 
 			print("START State: Moving Straight\nBased on Markov Chain, deciding the direction\n")
@@ -83,7 +83,10 @@ def callback(msg):
 		print("Met obstacle at 315 degree direction\nTurning Right")
 		move.linear.x = 0.0
 		move.angular.z = 1.04
-
+	else:
+		print("Met obstacle at front, turn left 90 degree")
+		move.linear.x = 0.0
+		move.angular.z = 1.571 
 
 	pub.publish(move)
 
